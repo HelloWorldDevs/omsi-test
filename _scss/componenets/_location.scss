@@ -1,0 +1,38 @@
+.location-card {
+  background: white;
+  border-radius: 10px;
+  margin: 30px 0;
+  @media (max-width: $width-md) {
+    margin-top: 0px;
+  }
+}
+
+#google-map5 {
+  height: 700px;
+  @media (max-width: $width-md) {
+    height: 300px;
+  }
+}
+
+#content .floating-card {
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  z-index: 10;
+  @media (max-width: $width-md) {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.hours {
+  & li {
+    list-style: none;
+    text-align: left;
+  }
+}
+
+.location-logo img {
+  max-width: 350px;
+}

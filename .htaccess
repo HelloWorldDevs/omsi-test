@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Hello World Staging Site"
+AuthUserFile /home/danlinn/pw/.htpasswd
+Require valid-user

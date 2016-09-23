@@ -1,0 +1,47 @@
+.phone-slab {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+
+  h3 {
+    @media screen and (max-width: $width-md) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &-topbr {
+    border-top: 5px solid #14718a;
+  }
+  &__left {
+    text-align: right;
+    border-right: solid 2px #A69F9B;
+    @media screen and (max-width: $width-md) {
+      text-align: center;
+      border-right: none;
+    }
+    @media screen and (max-width: $width-sm) {
+    }
+    @media screen and (max-width: $width-xs) {
+    }
+  }
+  &__right {
+    text-align: left;
+    margin-top: 5px;
+    @media screen and (max-width: $width-md) {
+      text-align: center;
+    }
+    @media screen and (max-width: $width-sm) {
+    }
+    @media screen and (max-width: $width-xs) {
+    }
+  }
+}
+
+
