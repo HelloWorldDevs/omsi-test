@@ -258,7 +258,6 @@ a:hover {
   background-color: #FFF;
   border-radius: 15px;
 }
-
 .hours .row {
   @media (max-width: $width-lg) {
     max-width: 550px;
@@ -306,5 +305,11 @@ button[class=close] {
   }
 }
 
-
+.mobile-pull-fix {
+  @media (max-width: $width-xs) {
+    float: none !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
