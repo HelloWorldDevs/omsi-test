@@ -7,6 +7,14 @@
 
 
 
+a.si-facebook {
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+  @media (max-width: $width-md) {
+    float: none;
+  }
+}
 
 .icon-facebook {
   color: white;
@@ -15,12 +23,19 @@
   width: 37px;
   text-align: center;
   border-radius: 8px;
-  float: right;
-  margin-right: 20px;
+  //margin-right: 20px;
   @media (max-width: $width-sm) {
     float: none;
-    margin-left: 20px;
+    //margin-left: 20px;
     margin-right: auto;
+  }
+}
+
+a.si-google {
+  display: inline-block;
+  float: right;
+  @media (max-width: $width-md) {
+    float: none;
   }
 }
 

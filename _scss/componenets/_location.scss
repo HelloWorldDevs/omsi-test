@@ -4,6 +4,7 @@
   margin: 30px 0;
   @media (max-width: $width-md) {
     margin-top: 0px;
+    background-color: rgba(255, 255, 255, 0);
   }
 }
 
@@ -15,14 +16,16 @@
 }
 
 #content .floating-card {
-  margin-right: auto;
-  margin-left: auto;
   position: absolute;
   z-index: 10;
+  left: 50%;
+  margin-left: -570px;
   @media (max-width: $width-md) {
-    position: relative;
+    position: static;
     text-align: center;
-    width: 100%;
+    width: 100% !important;
+    margin-left: 0px;
+    background-color: #f9f9f9;
   }
 }
 
@@ -35,4 +38,22 @@
 
 .location-logo img {
   max-width: 350px;
+}
+
+th {
+width: 1px;
+white-space: nowrap;
+text-align: right;
+}
+
+td {
+  text-align: right;
+}
+
+table {
+  max-width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

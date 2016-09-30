@@ -47,10 +47,10 @@
 				<!-- Logo
         ============================================= -->
 				<div id="logo">
-					<a href="index.html" class="standard-logo">
+					<a href="#" class="standard-logo" data-scrollTo="#section-about" data-offset="60">
 						<img src="assets/paul-lee-logo.svg" alt="Paul Lee, DDS">
 					</a>
-					<a href="index.html" class="retina-logo">
+					<a href="#" class="retina-logo" data-scrollTo="#section-about" data-offset="60">
 						<img src="assets/paul-lee-logo.svg" alt="Paul Lee, DDS">
 					</a>
 				</div><!-- #logo end -->
@@ -66,6 +66,7 @@
 						<li><a href="#" data-offset="40" data-href="#section-about"><div class=" font-primary t400">Dr. Lee</div></a></li>
 						<li><a href="#" data-offset="60" data-href="#section-services"><div class=" font-primary t400">Services</div></a></li>
 						<li><a href="#" data-offset="40" data-href="#section-tour"><div class=" font-primary t400">Tour</div></a></li>
+						<li><a href="#" data-offset="40" data-href="#section-forms"><div class=" font-primary t400">Forms</div></a></li>
 						<li><a href="#" data-offset="60" data-href="#section-location"><div class=" font-primary t400">Location</div></a></li>
 					</ul>
 
@@ -682,7 +683,7 @@
 								<div class="location-card center">
 
 									<div class="location-logo padding-reg">
-										<a href="index.html"><img class="" src="assets/paul-lee-logo.svg" alt="Paul Lee Logo"></a>
+										<a href="#" class="standard-logo" data-scrollTo="#section-about" data-offset="60"><img class="" src="assets/paul-lee-logo.svg" alt="Paul Lee Logo"></a>
 									</div>
 
 									<p class="font-raleway line-height-small margin-btm-half">1717 St. James Place, Suite 300 <br>Houston, TX 77056</p>
@@ -693,33 +694,59 @@
 									<p class="font-light">New Patient Hotline</p>
 									<h3 class="font-dark-orange line-height-no margin-btm phone-number"><a href="tel:1-888-436-9099" class="link-no-style">(888)&nbsp;436&#8209;9099</a></h3>
 
-									<button class="btn btn-style-2 margin-btm" data-toggle="modal" data-target="#requestAppointmentForm">Request Appointment</button>
+									<a class="btn bg-btn-default margin-btm" data-toggle="modal" data-target="#requestAppointmentForm">Request Appointment</a>
 
 									<p class="font-light">Existing patients call</p>
 									<h4 class="font-dark-orange font-light line-height-no phone-number margin-btm-half"><a href="tel:1-713-621-4424" class="link-no-style">(713)&nbsp;621&#8209;4424</a></h4>
 
-									<div class="hours center">
-										<div class="row">
-											<div class="col-xs-6 left-hours-fix">
-												<ul>
-													<li>Monday</li>
-													<li>Tuesday</li>
-													<li>Wednesday</li>
-													<li>Thursday</li>
-													<li>Friday</li>
-												</ul>
-											</div>
-											<div class="col-xs-6">
-												<ul>
-													<li>8:00am - 4:45pm</li>
-													<li>8:00am - 4:45pm</li>
-													<li>8:00am - 4:45pm</li>
-													<li>7:30am - 3:30pm</li>
-													<li>8:00am - 1:00pm</li>
-												</ul>
-											</div>
-										</div>
+									<div class="padding-btm">
+										<table width="100%" cellpadding="0" cellspacing="0">
+											<tbody><tr>
+												<th>Mon</th>
+												<td>8:00am - 4:45pm</td>
+											</tr>
+											<tr>
+												<th>Tue</th>
+												<td>8:00am - 4:45pm</td>
+											</tr>
+											<tr>
+												<th>Wed</th>
+												<td>8:00am - 4:45pm</td>
+											</tr>
+											<tr>
+												<th>Thu</th>
+												<td>7:30am - 3:30pm</td>
+											</tr>
+											<tr>
+												<th>Fri</th>
+												<td>8:00am - 1:00pm</td>
+											</tr>
+											</tbody>
+										</table>
 									</div>
+
+									<!--<div class="hours center">-->
+										<!--<div class="row">-->
+											<!--<div class="col-xs-6 left-hours-fix">-->
+												<!--<ul>-->
+													<!--<li>Monday</li>-->
+													<!--<li>Tuesday</li>-->
+													<!--<li>Wednesday</li>-->
+													<!--<li>Thursday</li>-->
+													<!--<li>Friday</li>-->
+												<!--</ul>-->
+											<!--</div>-->
+											<!--<div class="col-xs-6">-->
+												<!--<ul>-->
+													<!--<li>8:00am - 4:45pm</li>-->
+													<!--<li>8:00am - 4:45pm</li>-->
+													<!--<li>8:00am - 4:45pm</li>-->
+													<!--<li>7:30am - 3:30pm</li>-->
+													<!--<li>8:00am - 1:00pm</li>-->
+												<!--</ul>-->
+											<!--</div>-->
+										<!--</div>-->
+									<!--</div>-->
 
 								</div>
 							</div>
@@ -786,9 +813,15 @@
 
 		<div id="" class="bg-dark footer-padding center-md">
 			<div class="container">
-				<a href="https://plus.google.com/106088778020295010583?gl=us&hl=en" target="_blank" class="margin-btm-2x notd"><i class="icon-google"></i></a>
-				<a href="https://www.facebook.com/smilesbypaullee" target="_blank" class="margin-btm-2x notd"><i class="icon-facebook"></i></a>
-				<p class="font-white font-light notd margin-top-md">Copyrights &copy; 2016 All Rights Reserved by <a href="http://www.tysonsteele.com/" target="_blank" class="text-white notd">Tyson&nbsp;Steele&nbsp;Associates</a>.</p>
+				<a href="https://plus.google.com/106088778020295010583?gl=us&hl=en" class="social-icon si-colored si-google margin-btm-half notd">
+					<i class="icon-google-plus"></i>
+					<i class="icon-google-plus"></i>
+				</a>
+				<a href="https://www.facebook.com/smilesbypaullee" target="_blank" class="social-icon si-colored si-facebook margin-btm-half notd">
+					<i class="icon-facebook"></i>
+					<i class="icon-facebook"></i>
+				</a>
+				<p class="font-white font-light notd margin-top-md font-tiny">Copyrights &copy; 2016 All Rights Reserved by <a href="http://www.tysonsteele.com/" target="_blank" class="text-white notd">Tyson&nbsp;Steele&nbsp;Associates</a>.</p>
 			</div>
 		</div>
 
