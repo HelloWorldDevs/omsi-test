@@ -34,6 +34,10 @@ p {
 	font-family: Helvetica, sans-serif;
 }
 
+.font-oxy {
+	font-family: 'Oxygen', sans-serif !important;
+}
+
 .font-roboto {
 	font-family: 'Roboto Condensed';
 }
@@ -289,6 +293,9 @@ p {
 }
 
 #section-services p {
-	font-family: 'Bitter', serif;
 	margin-bottom: 20px;
+}
+
+#section-services .services-modals p {
+	font-family: 'Bitter';
 }

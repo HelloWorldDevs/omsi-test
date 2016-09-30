@@ -1,9 +1,12 @@
 .services-modals {
   & .modal-title {
-    color: #F36525;
   }
   & p {
     padding-bottom: 15px;
+  }
+  & img {
+    max-width: 180px;
+    padding-bottom: 20px;
   }
 }
 

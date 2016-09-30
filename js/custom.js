@@ -48,15 +48,15 @@
   $('.team-carousel').owlCarousel({
     items: 4,
     loop: true,
-    autoPlay: true,
-    autoPlaySpeed: 4000,
+    autoplay: true,
+    autoplaySpeed: 400,
     nav: true,
     dots: false,
     navText: [
       '<i class="icon-chevron-sign-left"></i>',
       '<i class="icon-chevron-sign-right"></i>'
     ],
-    autoplayTimeout:1000,
+    autoplayTimeout: 6000,
     autoplayHoverPause:true,
     responsive : {
       0 : {
@@ -77,15 +77,15 @@
   $('.tour-carousel').owlCarousel({
     items: 1,
     loop: true,
-    autoPlay: true,
-    autoPlaySpeed: 3000,
+    autoplay: true,
+    autoplaySpeed: 400,
     nav: true,
     dots: false,
     navText: [
       '<i class="icon-chevron-sign-left"></i>',
       '<i class="icon-chevron-sign-right"></i>'
     ],
-    autoplayTimeout:1000,
+    autoplayTimeout: 6000,
     autoplayHoverPause:true
   });
 
