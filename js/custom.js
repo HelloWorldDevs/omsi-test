@@ -108,6 +108,7 @@
       panControl: false,
       zoomControl: true,
       mapTypeControl: false,
+      draggable: false,
       scaleControl: false,
       streetViewControl: false,
       overviewMapControl: false

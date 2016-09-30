@@ -144,7 +144,7 @@ body {
 }
 
 a {
-	text-decoration: none !important;
+	text-decoration: none;
 	color: inherit;
 }
 
@@ -717,6 +717,28 @@ html[xmlns] .slider-wrap {display: block;}
 /* ----------------------------------------------------------------
 	Top Bar
 -----------------------------------------------------------------*/
+
+#primary-menu > ul > li > a:hover {
+	color: #68605B;
+	text-decoration: underline;
+}
+
+#primary-menu > ul > li:nth-child(1) > a:hover {
+	color: #31A2BF;
+	text-decoration: underline;
+}
+
+
+#primary-menu > ul > li:nth-child(2) > a:hover {
+	color: #2e8b9c;
+	text-decoration: underline;
+}
+
+
+#primary-menu > ul > li:nth-child(3) > a:hover {
+	color: #6e949c;
+	text-decoration: underline;
+}
 
 
 #top-bar {
@@ -10688,7 +10710,7 @@ blockquote.pull-right {
 	position: absolute;
 	top: 50%;
 	margin-top: -18px;
-	left: -36px;
+	left: -18px;
 	zoom: 1;
 	width: 32px;
 	height: 32px;
@@ -10698,10 +10720,14 @@ blockquote.pull-right {
 	background-color: #FFF;
 	font-size: 32px;
 	border-radius: 50%;
-	opacity: 0;
+	opacity: 1;
 	-webkit-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
+}
+
+.team-carousel.owl-carousel .owl-nav [class*=owl-] {
+	opacity: 1;
 }
 
 .owl-carousel.with-carousel-dots .owl-nav [class*=owl-] { margin-top: -38px; }
@@ -10722,7 +10748,7 @@ blockquote.pull-right {
 
 .owl-carousel  .owl-nav .owl-next {
 	left: auto;
-	right: -36px;
+	right: -18px;
 }
 
 .owl-carousel-full  .owl-nav .owl-next {
