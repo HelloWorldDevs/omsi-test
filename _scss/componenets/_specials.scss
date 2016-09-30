@@ -3,6 +3,10 @@
   border-radius: 8px;
   height: 100%;
   padding-bottom: 20px;
+  & h5 {
+    line-height: 1.2;
+    padding-top: 10px;
+  }
 }
 .specials-1 {
   background: #F7881F;
@@ -74,14 +78,25 @@
   font-size:18px;
 }
 .price {
-  font-size:88px;
-  color:#FFF;
+  font-size: 78px;
+  color: #FFF;
+  position: absolute;
+  padding-top: 5px;
+  padding-left: 10px;
+  width: 100px;
+  left: 50%;
+  margin-left: -45px;
+}
+.price:before {
+  content: '$';
+  font-size: 30px;
+  color: #FFF;
+  position: absolute;
+  left: -10px;
+  top: 40px;
 }
 .dollar {
-  font-size:36px;
-  color:#FFF;
-  top:-18px;
-  position:relative;
+  display: none;
 }
 .specials-row h5 {
   font-size:32px;

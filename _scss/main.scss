@@ -230,6 +230,9 @@ section {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
   }
+  @media (max-width: $width-sm) {
+    background-color: rgba(255, 255, 255, 0);;
+  }
 }
 
 button.btn-style-2 {
@@ -288,4 +291,20 @@ a:hover {
   background-position: 65% center;
 
 }
+
+button[class=close] {
+  font-size: 50px;
+}
+
+#section-insurance {
+  background-image:url('/assets/membership-row-paul-lee.jpg');
+  @media (max-width: $width-sm) {
+    background-image: none;
+    & .insurance-mobile-fix {
+      margin-top: -100px;
+    }
+  }
+}
+
+
 
