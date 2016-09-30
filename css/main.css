@@ -34226,7 +34226,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   h1 {
     font-size: 28px;
   }
@@ -34254,7 +34254,7 @@ h2 {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   h2 {
     font-size: 28px;
   }
@@ -34286,7 +34286,7 @@ h3 {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   h3 {
     font-size: 18px;
   }
@@ -34463,7 +34463,7 @@ p {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   .area-byline {
     font-size: 24px;
     margin: 80px 0px;
@@ -35208,7 +35208,7 @@ button[class=close] {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .mobile-pull-fix {
     float: none !important;
     margin-left: auto;
