@@ -296,7 +296,7 @@ button[class=close] {
 }
 
 #section-insurance {
-  background-image:url('assets/membership-row-paul-lee.jpg');
+  background-image:url('/assets/membership-row-paul-lee.jpg');
   @media (max-width: $width-sm) {
     background-image: none;
     & .insurance-mobile-fix {
