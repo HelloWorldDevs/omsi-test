@@ -14,7 +14,7 @@
     $form.submit(function(e) {
       e.preventDefault();
       var formData = $form.serialize();
-      var formAction = 'http://web-api.tysonsteele.com/v1/webprops/'+uid+'/schedule'
+      var formAction = 'http://web-api.tysonsteele.com/v1/webprops/'+uid+'/schedule';
       $('.form-error').remove();
       $.ajax({
         type: 'POST',
@@ -89,9 +89,9 @@
     autoplayHoverPause:true
   });
 
-  var mySwiper = new Swiper('.swiper-container', {
+   new Swiper('.swiper-container', {
       speed: 400,
-      autoplay: 7000
+      autoplay: false
     });
 
   $('#google-map5').gMap({
