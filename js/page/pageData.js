@@ -56,6 +56,7 @@ var pageDataModule = (function(){
     $.ajax({
       type: 'POST',
       url : 'http://rev.bfdig.com/data',
+      dataType: 'jsonp',
       contentType : 'application/json',
       data: JSON.stringify(data)
     }).then(function(data){
