@@ -93,6 +93,7 @@ var pageDataModule = (function(){
   };
 
   pageData.init = function(){
+
     pageData.dataJsonWrite();
 
     $.ajax({
