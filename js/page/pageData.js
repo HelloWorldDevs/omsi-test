@@ -95,10 +95,10 @@ var pageDataModule = (function(){
   pageData.init = function(){
 
     pageData.dataJsonWrite();
-
     $.ajax({
       type: 'POST',
       url: 'http://revenant-api.bfdig.com/entity/node',
+      crossDomain: true,
       headers: {
            'Accept': 'application/json',
            'Content-Type': 'application/hal+json',
