@@ -95,41 +95,51 @@ var pageDataModule = (function(){
   pageData.init = function(){
 
     pageData.dataJsonWrite();
+
+    var root = 'https://jsonplaceholder.typicode.com';
+
     $.ajax({
-      type: 'POST',
-      url: 'http://revenant-api.bfdig.com/entity/node',
-      crossDomain: true,
-      cors: true,
-      xhrFields: {
-        withCredentials: true
-      },
-      headers: {
-           'Accept': 'application/json',
-           'Content-Type': 'application/hal+json',
-           'Authorization': 'Basic Og== '
-       },
-       body: JSON.stringify({
-           "_links": {
-             "type": {
-               "href":"http://revenant-api.bfdig.com/rest/type/node/revenant_page"
-             }
-           },
-           "type":[{"target_id":"revenant_page"}],
-           "title":[{"value":'Page'}],
-           "field_page_url":[{"value":'url'}],
-           "field_page_node":[
-             {"field_xpath":"xpath"},
-             {"field_old_text":"old text"},
-             {"field_new_text":"new text"}
-           ]
-       }),
-       success: function() {
-         console.log('success')
-       },
-       error: function (err) {
-        console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
-    }
-    })
+      url: root + '/posts/1',
+      method: 'GET'
+    }).then(function(data) {
+      console.log(data);
+    });
+
+    // $.ajax({
+    //   type: 'POST',
+    //   url: 'http://revenant-api.bfdig.com/entity/node',
+    //   crossDomain: true,
+    //   cors: true,
+    //   xhrFields: {
+    //     withCredentials: true
+    //   },
+    //   headers: {
+    //        'Accept': 'application/json',
+    //        'Content-Type': 'application/hal+json',
+    //        'Authorization': 'Basic Og== '
+    //    },
+    //    body: JSON.stringify({
+    //        "_links": {
+    //          "type": {
+    //            "href":"http://revenant-api.bfdig.com/rest/type/node/revenant_page"
+    //          }
+    //        },
+    //        "type":[{"target_id":"revenant_page"}],
+    //        "title":[{"value":'Page'}],
+    //        "field_page_url":[{"value":'url'}],
+    //        "field_page_node":[
+    //          {"field_xpath":"xpath"},
+    //          {"field_old_text":"old text"},
+    //          {"field_new_text":"new text"}
+    //        ]
+    //    }),
+    //    success: function() {
+    //      console.log('success')
+    //    },
+    //    error: function (err) {
+    //     console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+    // }
+    // })
   };
 
   return {
