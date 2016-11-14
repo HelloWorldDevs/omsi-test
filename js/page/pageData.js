@@ -99,7 +99,7 @@ var pageDataModule = (function(){
     var root = 'https://jsonplaceholder.typicode.com';
 
     $.ajax({
-      url: root + '/posts/1',
+      url:'http://revenant-api.bfdig.com/content',
       method: 'GET'
     }).then(function(data) {
       console.log(data);
