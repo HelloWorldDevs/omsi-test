@@ -101,6 +101,7 @@ var pageDataModule = (function(){
       crossDomain: true,
       headers: {
            'Accept': 'application/json',
+           'Content-Type': 'application/hal+json',
            'Authorization': 'Basic Og== '
        },
        body: JSON.stringify({
