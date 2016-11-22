@@ -96,12 +96,12 @@ var pageDataModule = (function(){
     pageData.dataJsonWrite();
 
 
-    // $.ajax({
-    //   url:'http://revenant-api.bfdig.com/rest-test',
-    //   method: 'GET'
-    // }).then(function(data) {
-    //   console.log(data);
-    // });
+    $.ajax({
+      url:'http://revenant-api.bfdig.com/rest-test',
+      method: 'GET'
+    }).then(function(data) {
+      console.log(data);
+    });
 
 
 
