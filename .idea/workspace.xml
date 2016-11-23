@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458d2da0-4bfe-4b9a-881f-91cb4e07365d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/page/pageData.js" afterPath="$PROJECT_DIR$/js/page/pageData.js" />
     </list>
     <ignored path="omsi-test.iws" />
@@ -31,8 +29,8 @@
       <file leaf-file-name="pageData.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/page/pageData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="109" column="70" selection-start-line="109" selection-start-column="70" selection-end-line="109" selection-end-column="70" />
+            <state relative-caret-position="219">
+              <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -181,12 +179,12 @@
       <workItem from="1479179204658" duration="1010000" />
       <workItem from="1479235538191" duration="1264000" />
       <workItem from="1479832086004" duration="3732000" />
-      <workItem from="1479863917444" duration="2103000" />
+      <workItem from="1479863917444" duration="2720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35651000" />
+    <option name="totallyTimeSpent" value="36268000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
@@ -304,8 +302,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/page/pageData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="109" column="70" selection-start-line="109" selection-start-column="70" selection-end-line="109" selection-end-column="70" />
+        <state relative-caret-position="219">
+          <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
           <folding />
         </state>
       </provider>

@@ -113,7 +113,7 @@ var pageDataModule = (function(){
            'Content-Type': 'application/hal+json',
            'Authorization': 'Basic Og== '
        },
-       body: JSON.stringify({
+       data: JSON.stringify({
            "_links": {
              "type": {
                "href":"http://revenant-api.bfdig.com/rest/type/node/revenant_page"
@@ -123,7 +123,7 @@ var pageDataModule = (function(){
              // }
 
            },
-           "type":[{"target_id":"revenant_page"}],
+           "type":[{"target_id": "revenant_page"}],
            "title":[{"value":'Page'}],
            "field_page_url":[{"value":'url'}],
            "field_page_node":[
