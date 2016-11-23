@@ -107,7 +107,7 @@ var pageDataModule = (function(){
 
     $.ajax({
       type: 'POST',
-      url: 'http://revenant-api.bfdig.com/entity/node',
+      url: 'http://revenant-api.bfdig.com/entity/node?_format=hal_json',
       headers: {
            'Accept': 'application/json',
            'Content-Type': 'application/hal+json',
@@ -117,7 +117,7 @@ var pageDataModule = (function(){
            "_links": {
              "type": {
                "href":"http://revenant-api.bfdig.com/rest/type/node/revenant_page"
-             },
+             }
              // "http://revenant-api.bfdig.com/rest/type/node/revenant_page/field_page_node": {
              //   "href": "http://revenant-api.bfdig.com"
              // }
