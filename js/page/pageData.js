@@ -110,8 +110,7 @@ var pageDataModule = (function(){
       url: 'http://revenant-api.bfdig.com/entity/node',
       headers: {
            'Accept': 'application/json',
-           'Content-Type': 'application/hal+json',
-           'Authorization': 'Basic Og== '
+           'Content-Type': 'application/hal+json'
        },
        data: JSON.stringify({
            "_links": {
