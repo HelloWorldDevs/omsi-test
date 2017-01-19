@@ -17,10 +17,17 @@ var pageDataModule = (function(){
   };
 
   pageData.getCompletePath = function(e) {
-      var url = window.location.href;
+      var url = window.location.hostname + window.location.pathname;
       var xpath = pageData.getXPath(e.parentNode);
       var title = encodeURIComponent(document.title.trim());
-      var completePath = url + ']][[' + xpath + ']][[' + title;
+      var oldText = pageData.getText(e);
+      var completePath = {
+        url: url,
+        xpath: xpath,
+        title: title,
+        oldText: oldText
+      };
+      // var completePath =  url + ']][[' + xpath + ']][[' + title + ']][[' + oldText;
       return completePath;
   }
 
@@ -112,7 +119,7 @@ var pageDataModule = (function(){
           console.log('success again!', data);
           if (!data.length) {
             var page = {};
-            page.title = window.location.hostname + ' path: ' + window.location.pathname;
+            page.title = window.location.hostname + window.location.pathname;
             page.url = currentPage;
             createRevenantPage(page);
           }

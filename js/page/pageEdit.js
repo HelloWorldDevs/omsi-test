@@ -23,6 +23,7 @@ var pageEditModule = (function(){
     $('.text--edit').on('click', function() {
       console.log('click!')
       var dataCategory = $(this).attr('data-category');
+      console.log(dataCategory);
       var el = document.querySelector('[data-category="'+ dataCategory +'"');
       if (!el.hasAttribute('id', dataCategory)) {
         el.setAttribute('id', dataCategory);
@@ -45,9 +46,9 @@ var pageEditModule = (function(){
       if (element.nodeType == Node.TEXT_NODE && element.nodeValue.trim() != '' && element.parentNode.nodeName != 'SCRIPT' && element.parentNode.nodeName != 'NOSCRIPT'){
         var completePath = pageDataModule.getCompletePath(element);
         element.parentNode.className += ' text--edit';
-        element.parentNode.setAttribute('data-category', completePath);
+        element.parentNode.setAttribute('data-category', completePath.xpath);
+        $('[data-category="' + completePath.xpath + '"]').data('complete-path', completePath);
         element.parentNode.setAttribute('contenteditable','true');
-
         if(element.parentNode.nodeName === 'A'){
           element.parentNode.onclick = function(e){
             e.preventDefault();
