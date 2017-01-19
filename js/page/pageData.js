@@ -1,6 +1,6 @@
 var pageDataModule = (function(){
   var pageData = {};
-  pageData.all = []
+  pageData.all = [];
 
   pageData.getXPath = function(element) {
     var xpath = '';
@@ -16,7 +16,7 @@ var pageDataModule = (function(){
     return xpath;
   };
 
-  pageData.getCompletePath = function(e){
+  pageData.getCompletePath = function(e) {
       var url = window.location.href;
       var xpath = pageData.getXPath(e.parentNode);
       var title = encodeURIComponent(document.title.trim());
@@ -96,48 +96,57 @@ var pageDataModule = (function(){
     pageData.dataJsonWrite();
 
 
-    $.ajax({
-      url:'http://revenant-api.bfdig.com/rest-test',
-      method: 'GET'
-    }).then(function(data) {
-      console.log(data);
-    });
+
+    //BETTER SOLUTION
+    // create a D8 callback that handles everything, creates page and entity all in opn php callback
+    //if page doesn't exist only create the page reference.
 
 
-
-    $.ajax({
-      type: 'POST',
-      url: 'http://revenant-api.bfdig.com/entity/node',
-      headers: {
-           'Accept': 'application/json',
-           'Content-Type': 'application/hal+json'
-       },
-       data: JSON.stringify({
-           "_links": {
-             "type": {
-               "href":"http://revenant-api.bfdig.com/rest/type/node/revenant_page"
-             }
-             // "http://revenant-api.bfdig.com/rest/type/node/revenant_page/field_page_node": {
-             //   "href": "http://revenant-api.bfdig.com"
-             // }
-           },
-           "type":[{"target_id": "revenant_page"}],
-           "title":[{"value":"Page"}],
-           "field_page_url":[{"value":"url"}],
-           "field_page_node":[{
-            "value": [{"field_xpath":"xpath"},
-               {"field_old_text":"old text"},
-               {"field_new_text":"new text"}]
-           }
-           ]
-       }),
-       success: function() {
-         console.log('success')
-       },
-       error: function (err) {
-        console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+  ///SIMPLE GET PAGE AND CREATE CHECK
+    function revenantContentCheck() {
+      const currentPage = window.location.hostname + window.location.pathname;
+      $.ajax({
+        method: 'GET',
+        url:'http://revenant-api.dev/rev-content/?url=' + currentPage,
+        success: function(data) {
+          console.log('success again!', data);
+          if (!data.length) {
+            var page = {};
+            page.title = window.location.hostname + ' path: ' + window.location.pathname;
+            page.url = currentPage;
+            createRevenantPage(page);
+          }
+        },
+        error: function (err) {
+          console.log("AJAX error in request: " + err);
+        }
+      })
     }
-    })
+
+
+    ///SIMPLE TEST POST METHOD
+    function createRevenantPage(page) {
+      console.log('current page', page);
+      $.ajax({
+        type: 'POST',
+        url: 'http://revenant-api.dev/revenant_page/page',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/hal+json'
+        },
+        data: JSON.stringify(page),
+        success: function(data) {
+          console.log('success', data)
+        },
+        error: function (err) {
+          console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+        }
+      })
+    }
+
+    revenantContentCheck()
+
+
   };
 
   return {

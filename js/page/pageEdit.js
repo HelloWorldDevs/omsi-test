@@ -5,9 +5,11 @@ var pageEditModule = (function(){
   CKEDITOR.plugins.addExternal('inlinesave', '/ckeditor/inlinesave/', 'plugin.js' );
   CKEDITOR.disableAutoInline = true;
   CKEDITOR.config.inlinesave = {
-  postUrl: 'http://rev.bfdig.com/dataUpdate',
+  postUrl: 'http://revenant-api.dev/revenant_page/page_content',
+  useJson: true,
   postData: {test: true},
   onSave: function(editor){
+    console.log('save!', editor);
     return true;
   },
   onSuccess: function(editor, data) { console.log('save successful', editor, data); },
@@ -18,14 +20,17 @@ var pageEditModule = (function(){
 
 //inline editor added on text element click
   pageEdit.edit = function() {
-    $('.text--edit').on('click', function(){
+    $('.text--edit').on('click', function() {
+      console.log('click!')
       var dataCategory = $(this).attr('data-category');
       var el = document.querySelector('[data-category="'+ dataCategory +'"');
-      el.setAttribute('id', dataCategory);
-      CKEDITOR.inline(el, {
-        bodyId: dataCategory,
-        extraPlugins : 'inlinesave'
-      });
+      if (!el.hasAttribute('id', dataCategory)) {
+        el.setAttribute('id', dataCategory);
+        CKEDITOR.inline(el, {
+          bodyId: dataCategory,
+          extraPlugins : 'inlinesave'
+        });
+      }
     });
   };
 
@@ -55,6 +60,7 @@ var pageEditModule = (function(){
 
 
   pageEdit.init = function(){
+    console.log('WORK!!!!');
     pageEdit.addEditClass();
     pageEdit.edit();
   };
