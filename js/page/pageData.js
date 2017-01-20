@@ -19,7 +19,7 @@ var pageDataModule = (function(){
   pageData.getCompletePath = function(e) {
       var url = window.location.hostname + window.location.pathname;
       var xpath = pageData.getXPath(e.parentNode);
-      var title = encodeURIComponent(document.title.trim());
+      var title = document.title;
       var oldText = pageData.getText(e);
       var completePath = {
         url: url,

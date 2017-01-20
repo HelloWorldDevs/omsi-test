@@ -21,14 +21,14 @@ var pageEditModule = (function(){
 //inline editor added on text element click
   pageEdit.edit = function() {
     $('.text--edit').on('click', function() {
-      console.log('click!')
       var dataCategory = $(this).attr('data-category');
-      console.log(dataCategory);
+      var data = $(this).data('complete-path');
+      console.log('data again!', data);
       var el = document.querySelector('[data-category="'+ dataCategory +'"');
-      if (!el.hasAttribute('id', dataCategory)) {
-        el.setAttribute('id', dataCategory);
+      if (!el.hasAttribute('id', JSON.stringify(data))) {
+        el.setAttribute('id', JSON.stringify(data));
         CKEDITOR.inline(el, {
-          bodyId: dataCategory,
+          bodyId: data,
           extraPlugins : 'inlinesave'
         });
       }
