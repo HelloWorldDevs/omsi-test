@@ -1124,7 +1124,7 @@ var SEMICOLON = SEMICOLON || {};
 		menufunctions: function(){
 
 			$( '#primary-menu ul li:has(ul)' ).addClass('sub-menu');
-			$( '.top-links ul li:has(ul) > a, #primary-menu.with-arrows > ul > li:has(ul) > a > div, #primary-menu.with-arrows > div > ul > li:has(ul) > a > div, #page-menu nav ul li:has(ul) > a > div' ).append( '<i class="icon-angle-down"></i>' );
+			$( '.top-links ul li:has(ul) > a, #primary-menu.with-arrows > ul > li:has(ul) > a > div, #primary-menu.with-arrows > div > ul > li:has(ul) > a > div, #revenant-menu nav ul li:has(ul) > a > div' ).append( '<i class="icon-angle-down"></i>' );
 			$( '.top-links > ul' ).addClass( 'clearfix' );
 
 			if( $body.hasClass('device-lg') || $body.hasClass('device-md') ) {
@@ -1214,14 +1214,14 @@ var SEMICOLON = SEMICOLON || {};
 		stickyPageMenu: function( pageMenuOffset ){
 			if ($window.scrollTop() > pageMenuOffset) {
 				if( $body.hasClass('device-lg') || $body.hasClass('device-md') ) {
-					$('#page-menu:not(.dots-menu,.no-sticky)').addClass('sticky-page-menu');
+					$('#revenant-menu:not(.dots-menu,.no-sticky)').addClass('sticky-page-menu');
 				} else if( $body.hasClass('device-xs') || $body.hasClass('device-xxs') || $body.hasClass('device-sm') ) {
 					if( $body.hasClass('sticky-responsive-pagemenu') ) {
-						$('#page-menu:not(.dots-menu,.no-sticky)').addClass('sticky-page-menu');
+						$('#revenant-menu:not(.dots-menu,.no-sticky)').addClass('sticky-page-menu');
 					}
 				}
 			} else {
-				$('#page-menu:not(.dots-menu,.no-sticky)').removeClass('sticky-page-menu');
+				$('#revenant-menu:not(.dots-menu,.no-sticky)').removeClass('sticky-page-menu');
 			}
 		},
 
@@ -1455,7 +1455,7 @@ var SEMICOLON = SEMICOLON || {};
 			$(document).on('click', function(event) {
 				if (!$(event.target).closest('#top-search').length) { $body.toggleClass('top-search-open', false); }
 				if (!$(event.target).closest('#top-cart').length) { $topCart.toggleClass('top-cart-open', false); }
-				if (!$(event.target).closest('#page-menu').length) { $pagemenu.toggleClass('pagemenu-active', false); }
+				if (!$(event.target).closest('#revenant-menu').length) { $pagemenu.toggleClass('pagemenu-active', false); }
 				if (!$(event.target).closest('#side-panel').length) { $body.toggleClass('side-panel-open', false); }
 				if (!$(event.target).closest('#primary-menu.mobile-menu-off-canvas > ul').length) { $('#primary-menu.mobile-menu-off-canvas > ul').toggleClass('show', false); }
 				if (!$(event.target).closest('#primary-menu.mobile-menu-off-canvas > div > ul').length) { $('#primary-menu.mobile-menu-off-canvas > div > ul').toggleClass('show', false); }
@@ -3423,7 +3423,7 @@ var SEMICOLON = SEMICOLON || {};
 				$body.toggleClass("primary-menu-open");
 				return false;
 			});
-			$('#page-submenu-trigger').click(function() {
+			$('#revenant-submenu-trigger').click(function() {
 				$body.toggleClass('top-search-open', false);
 				$pagemenu.toggleClass("pagemenu-active");
 				return false;
@@ -3631,8 +3631,8 @@ var SEMICOLON = SEMICOLON || {};
 		retinaStickyLogo = retinaLogo.attr('data-sticky-logo'),
 		defaultMobileLogo = defaultLogo.attr('data-mobile-logo'),
 		retinaMobileLogo = retinaLogo.attr('data-mobile-logo'),
-		$pagemenu = $('#page-menu'),
-		$onePageMenuEl = $('.one-page-menu'),
+		$pagemenu = $('#revenant-menu'),
+		$onePageMenuEl = $('.one-revenant-menu'),
 		onePageGlobalOffset = 0,
 		$portfolio = $('.portfolio'),
 		$shop = $('.shop'),
@@ -3640,7 +3640,7 @@ var SEMICOLON = SEMICOLON || {};
 		$slider = $('#slider'),
 		$sliderParallaxEl = $('.slider-parallax'),
 		swiperSlider = '',
-		$pageTitle = $('#page-title'),
+		$pageTitle = $('#revenant-title'),
 		$portfolioItems = $('.portfolio-ajax').find('.portfolio-item'),
 		$portfolioDetails = $('#portfolio-ajax-wrap'),
 		$portfolioDetailsContainer = $('#portfolio-ajax-container'),
@@ -3657,10 +3657,10 @@ var SEMICOLON = SEMICOLON || {};
 		$fullScreenEl = $('.full-screen'),
 		$commonHeightEl = $('.common-height'),
 		$testimonialsGridEl = $('.testimonials-grid'),
-		$pageSectionEl = $('.page-section'),
+		$pageSectionEl = $('.revenant-section'),
 		$owlCarouselEl = $('.owl-carousel'),
 		$parallaxEl = $('.parallax'),
-		$parallaxPageTitleEl = $('.page-title-parallax'),
+		$parallaxPageTitleEl = $('.revenant-title-parallax'),
 		$parallaxPortfolioEl = $('.portfolio-parallax').find('.portfolio-image'),
 		$textRotaterEl = $('.text-rotater'),
 		$cookieNotification = $('#cookie-notification');

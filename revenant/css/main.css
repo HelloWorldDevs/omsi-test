@@ -17,10 +17,25 @@ textarea {
 }
 
 .text--edit:hover{
-  /*display: flex;*/
-  /*flex-direction: column;*/
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
   border-radius: 1rem;
   cursor: pointer;
+}
+.rev_login {
+  text-align: right;
+}
+
+.rev_login__contaier {
+  height: 1px;
+  opacity: 0;
+  -webkit-transition: all .7s;
+  -moz-transition: all .7s;
+  -o-transition: all .7s;
+  transition: all .7s;
+}
+
+.show {
+  height: 100%;
+  opacity: 1;
 }

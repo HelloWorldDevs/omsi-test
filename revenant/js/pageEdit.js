@@ -2,7 +2,7 @@ var pageEditModule = (function(){
   var pageEdit = {};
 
   //ckeditor inline save plugin configuration.
-  CKEDITOR.plugins.addExternal('inlinesave', '/ckeditor/inlinesave/', 'plugin.js' );
+  CKEDITOR.plugins.addExternal('inlinesave', '/revenant/ckeditor/inlinesave/', 'plugin.js' );
   CKEDITOR.disableAutoInline = true;
 
 
@@ -62,10 +62,22 @@ var pageEditModule = (function(){
     recurse(body);
   };
 
+    pageEdit.appendLogin = function() {
+        (function() {
+            templateModule.getCompiledTemplate('login')
+                .then(function(html){
+                $('body').prepend(html);
+                $('.rev_login_reveal').on('click', function() {
+                  $('.rev_login__contaier').toggleClass('show');
+                })
+            });
+        }())
+    };
 
-  pageEdit.init = function(){
+  pageEdit.init = function() {
     pageEdit.addEditClass();
     pageEdit.edit();
+      pageEdit.appendLogin();
   };
 
   return {

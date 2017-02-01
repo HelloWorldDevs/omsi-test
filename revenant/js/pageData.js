@@ -1,6 +1,6 @@
 var pageDataModule = (function(){
   var pageData = {};
-  pageData.all = [];
+  // pageData.all = [];
 
   pageData.getXPath = function(element) {
     var xpath = '';
@@ -40,72 +40,67 @@ var pageDataModule = (function(){
   };
 
 //for returned text, resolves ckeditor inline character entity issues when reloading new text.
-  pageData.decodeEntities = (function() {
-    // this prevents any overhead from creating the object each time
-    var element = document.createElement('div');
-    function decodeHTMLEntities (str) {
-      if(str && typeof str === 'string') {
-        // strip script/html tags
-        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-        element.innerHTML = str;
-        str = element.textContent;
-        element.textContent = '';
-      }
-      return str;
-    }
-    return decodeHTMLEntities;
-  })();
+//   pageData.decodeEntities = (function() {
+//     // this prevents any overhead from creating the object each time
+//     var element = document.createElement('div');
+//     function decodeHTMLEntities (str) {
+//       if(str && typeof str === 'string') {
+//         // strip script/html tags
+//         str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+//         str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+//         element.innerHTML = str;
+//         str = element.textContent;
+//         element.textContent = '';
+//       }
+//       return str;
+//     }
+//     return decodeHTMLEntities;
+//   })();
 
-//checks data.json and updates elements on page with saved text different from older text
-  pageData.dataJsonSend = function(data){
-    $.ajax({
-      type: 'POST',
-      url : 'http://rev.bfdig.com/data',
-      dataType: 'jsonp',
-      contentType : 'application/json',
-      data: JSON.stringify(data)
-    }).then(function(data){
-      if(data.length > 0){
-        // console.log(data)
-        data.forEach(function(item){
-          var el = pageData.getElementByXpath(item.xpath);
-          var decodedText = pageData.decodeEntities(item.newText);
-          el.textContent = decodedText;
-        })
-      }
-    })
-  }
+//checks data.json and updates elements on revenant with saved text different from older text
+//   pageData.dataJsonSend = function(data){
+//     $.ajax({
+//       type: 'POST',
+//       url : 'http://rev.bfdig.com/data',
+//       dataType: 'jsonp',
+//       contentType : 'application/json',
+//       data: JSON.stringify(data)
+//     }).then(function(data){
+//       if(data.length > 0){
+//         // console.log(data)
+//         data.forEach(function(item){
+//           var el = pageData.getElementByXpath(item.xpath);
+//           var decodedText = pageData.decodeEntities(item.newText);
+//           el.textContent = decodedText;
+//         })
+//       }
+//     })
+//   }
 
 //sends initial oldText and Complete path data to data.json file and for sending data to check against dataJson
-  pageData.dataJsonWrite = function(){
-    var body = document.getElementsByTagName('body')[0];
-    function recurse(element){
-      if (element.childNodes.length > 0){
-          for (var i = 0; i < element.childNodes.length; i++)
-              recurse(element.childNodes[i]);
-      }
-      if (element.nodeType == Node.TEXT_NODE && element.nodeValue.trim() != '' && element.parentNode.nodeName != 'SCRIPT' && element.parentNode.nodeName != 'NOSCRIPT'){
-          var completePath = pageData.getCompletePath(element);
-          var oldText = pageData.getText(element);
-          pageData.all.push({
-            completePath : completePath,
-            oldText : oldText
-          })
-      }
-    }
-    recurse(body);
-    pageData.dataJsonSend(pageData.all);
-  };
+//   pageData.dataJsonWrite = function(){
+//     var body = document.getElementsByTagName('body')[0];
+//     function recurse(element){
+//       if (element.childNodes.length > 0){
+//           for (var i = 0; i < element.childNodes.length; i++)
+//               recurse(element.childNodes[i]);
+//       }
+//       if (element.nodeType == Node.TEXT_NODE && element.nodeValue.trim() != '' && element.parentNode.nodeName != 'SCRIPT' && element.parentNode.nodeName != 'NOSCRIPT'){
+//           var completePath = pageData.getCompletePath(element);
+//           var oldText = pageData.getText(element);
+//           pageData.all.push({
+//             completePath : completePath,
+//             oldText : oldText
+//           })
+//       }
+//     }
+//     recurse(body);
+//     pageData.dataJsonSend(pageData.all);
+//   };
 
   pageData.init = function() {
-    pageData.dataJsonWrite();
+    // pageData.dataJsonWrite();
 
-
-
-    //BETTER SOLUTION
-    // create a D8 callback that handles everything, creates page and entity all in opn php callback
-    //if page doesn't exist only create the page reference.
 
     $(function () {
 
@@ -128,26 +123,26 @@ var pageDataModule = (function(){
 
 
       //Oauth POST
-        data = {
-          "grant_type": "password",
-          "client_id": "", //with the the client’s ID
-          "client_secret": "", //with the client’s secret
-          "username": "", //with the user’s username
-          "password": "",  //with the user’s password
-        }
-        $.ajax({
-          url: "http://revenant-api.dev/oauth/token",
-          method: "POST",
-          data: data,
-        }).error(function(error){console.log('oauth error', error)})
-              .done(function (response, status, xhr) {
-            console.log('oauth response', response);
-          });
+      //   data = {
+      //     "grant_type": "password",
+      //     "client_id": "", //with the the client’s ID
+      //     "client_secret": "", //with the client’s secret
+      //     "username": "", //with the user’s username
+      //     "password": "",  //with the user’s password
+      //   }
+      //   $.ajax({
+      //     url: "http://revenant-api.dev/oauth/token",
+      //     method: "POST",
+      //     data: data,
+      //   }).error(function(error){console.log('oauth error', error)})
+      //         .done(function (response, status, xhr) {
+      //       console.log('oauth response', response);
+      //     });
 
       });
 
 
-  ///check for revenant page content items for current page.
+  ///check for revenant revenant content items for current revenant.
     function revenantContentCheck() {
       const currentPage = window.location.hostname + window.location.pathname;
       $.ajax({
@@ -156,7 +151,7 @@ var pageDataModule = (function(){
         success: function(data) {
           console.log('success again!', data);
 
-          //if no page nodes are sent, send current page data to be created as revenant page entity reference
+          //if no revenant nodes are sent, send current revenant data to be created as revenant revenant entity reference
           if (!data.length) {
             var page = {};
             page.title = window.location.hostname + window.location.pathname;
@@ -164,7 +159,7 @@ var pageDataModule = (function(){
             createRevenantPage(page);
           }
 
-          // check all content items and replace page text with text from DB
+          // check all content items and replace revenant text with text from DB
           else {
             data.forEach(function(item) {
               if (item.field_xpath.includes('default')) {
@@ -182,12 +177,12 @@ var pageDataModule = (function(){
     }
 
 
-    ///revenant page create
+    ///revenant revenant create
     function createRevenantPage(page) {
-      console.log('current page', page);
+      console.log('current revenant', page);
       $.ajax({
         type: 'POST',
-        url: 'http://revenant-api.dev/revenant_page/page',
+        url: 'http://revenant-api.dev/revenant_page/revenant',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/hal+json'
