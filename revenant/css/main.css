@@ -1,13 +1,6 @@
-textarea {
-  resize: none;
-  width: 100%;
-}
 
 .text--edit {
-  /*display: block;*/
-  /*flex-direction: column;*/
   padding: .3rem;
-  /*margin: 1rem;*/
   border-radius: 1rem;
   border: 1px solid rgba(81, 203, 238, 1);
   -webkit-transition : border 500ms ease-out;
@@ -16,12 +9,13 @@ textarea {
   transition : border 500ms ease-out;
 }
 
-.text--edit:hover{
+.text--edit:hover {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
   border-radius: 1rem;
   cursor: pointer;
 }
+
 .rev_login {
   text-align: right;
 }
@@ -36,6 +30,6 @@ textarea {
 }
 
 .show {
-  height: 100%;
+  height: 15rem;
   opacity: 1;
 }

@@ -122,22 +122,6 @@ var pageDataModule = (function(){
 
 
 
-      //Oauth POST
-      //   data = {
-      //     "grant_type": "password",
-      //     "client_id": "", //with the the client’s ID
-      //     "client_secret": "", //with the client’s secret
-      //     "username": "", //with the user’s username
-      //     "password": "",  //with the user’s password
-      //   }
-      //   $.ajax({
-      //     url: "http://revenant-api.dev/oauth/token",
-      //     method: "POST",
-      //     data: data,
-      //   }).error(function(error){console.log('oauth error', error)})
-      //         .done(function (response, status, xhr) {
-      //       console.log('oauth response', response);
-      //     });
 
       });
 
