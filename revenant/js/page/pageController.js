@@ -38,7 +38,7 @@ var pageControllerModule = (function($){
     });
   };
 
-// adds edit class to all text nodes
+  // adds edit class and data to all text nodes
   pageController.addEditClass = function(){
     var body = document.getElementsByTagName('body')[0];
     function recurseAdd(element){
@@ -47,7 +47,7 @@ var pageControllerModule = (function($){
               recurseAdd(element.childNodes[i]);
       }
       if (element.nodeType == Node.TEXT_NODE && element.nodeValue.trim() != '' && element.parentNode.nodeName != 'SCRIPT' && element.parentNode.nodeName != 'NOSCRIPT') {
-        var completePath = pageDataModule.getCompletePath(element);
+        var completePath = pageModule.getCompletePath(element);
         element.parentNode.className += ' text--edit';
         element.parentNode.setAttribute('data-category', completePath.xpath);
         $('[data-category="' + completePath.xpath + '"]').data('complete-path', completePath);
@@ -62,92 +62,95 @@ var pageControllerModule = (function($){
     recurseAdd(body);
   };
 
-    pageController.removeEditClass = function(){
-        var body = document.getElementsByTagName('body')[0];
-        function recurseRemove(element){
-            if (element.childNodes.length > 0){
-                for (var i = 0; i < element.childNodes.length; i++)
-                    recurseRemove(element.childNodes[i]);
-            }
-            if (element.nodeType == Node.TEXT_NODE && element.nodeValue.trim() != '' && element.parentNode.nodeName != 'SCRIPT' && element.parentNode.nodeName != 'NOSCRIPT') {
-                var completePath = pageDataModule.getCompletePath(element);
-                element.parentNode.classList.remove("text--edit");
-                $('[data-category="' + completePath.xpath + '"]').removeData('complete-path');
-                element.parentNode.removeAttribute('data-category');
-                element.parentNode.removeAttribute('contenteditable');
-                if(element.parentNode.nodeName === 'A'){
-                    element.parentNode.onclick = null;
-                }
-            }
-        }
-        recurseRemove(body);
-    };
+  // removes edit class and data on all text nodes
+  pageController.removeEditClass = function() {
+      var body = document.getElementsByTagName('body')[0];
+      function recurseRemove(element){
+          if (element.childNodes.length > 0){
+              for (var i = 0; i < element.childNodes.length; i++)
+                  recurseRemove(element.childNodes[i]);
+          }
+          if (element.nodeType == Node.TEXT_NODE && element.nodeValue.trim() != '' && element.parentNode.nodeName != 'SCRIPT' && element.parentNode.nodeName != 'NOSCRIPT') {
+              var completePath = pageModule.getCompletePath(element);
+              element.parentNode.classList.remove("text--edit");
+              $('[data-category="' + completePath.xpath + '"]').removeData('complete-path');
+              element.parentNode.removeAttribute('data-category');
+              element.parentNode.removeAttribute('contenteditable');
+              if(element.parentNode.nodeName === 'A'){
+                  element.parentNode.onclick = null;
+              }
+          }
+      }
+      recurseRemove(body);
+  };
 
+  //appends login and and event handler for hiding/showing and authenticating.
+  pageController.appendLogin = function() {
+      (function() {
+          templateModule.getCompiledTemplate('login')
+              .then(function(html){
+              $('body').prepend(html);
+              $('.rev_login_reveal').on('click', function() {
+                $('.rev_login__contaier').toggleClass('show');
+                  pageController.loginAuthenticate();
+              })
+          });
+      }());
+  };
 
-    pageController.appendLogin = function() {
-        (function() {
-            templateModule.getCompiledTemplate('login')
-                .then(function(html){
-                $('body').prepend(html);
-                $('.rev_login_reveal').on('click', function() {
-                  $('.rev_login__contaier').toggleClass('show');
-                    pageController.loginAuthenticate();
-                })
+  //appends control panel for user and passes session variable with username to .hbs template
+  pageController.appendControlPanel = function() {
+      templateModule.getCompiledTemplate('user_control_panel')
+          .then(function(html){
+              var rev_auth = JSON.parse(sessionStorage.getItem('rev_auth'));
+              $('body').prepend(html(rev_auth));
+              $('.rev_logout').on('click', function() {
+                  $('.rev_user_control_panel').remove();
+                  pageController.removeEditClass();
+                  sessionStorage.clear();
+                  pageController.init();
+              })
+          });
+  };
+
+  //authenticates using D8 simple_oauth module parameters. Stores session var with tokens and username, removes login and calls functions for adding edit class and control panel.
+  pageController.loginAuthenticate = function() {
+    $('.rev_login__form').on('submit', function(e) {
+      var username = $(this).find('input[title="username"]').val();
+      var password = $(this).find('input[title="password"]').val();
+        e.preventDefault();
+        //Oauth POST
+          data = {
+            "grant_type": "password",
+            "client_id": OAUTH_CLIENT_ID,
+            "client_secret": password,
+            "username": username,
+            "password": password,
+          }
+          $.ajax({
+            url: "http://revenant-api.dev/oauth/token",
+            method: "POST",
+            data: data,
+          })
+            .error(function(error){
+            console.log('oauth error', error)
+          })
+            .done(function (response, status, xhr) {
+              console.log('oauth response', response);
+                sessionStorage.setItem( 'rev_auth', JSON.stringify({
+                  "username": username,
+                  "access_token":response.access_token,
+                  "refresh_token": response.refresh_token
+                }));
+                $('.rev_login').remove();
+                pageController.addEditClass();
+                pageController.edit();
+                pageController.appendControlPanel();
             });
-        }())
-    };
+    })
+  };
 
-    pageController.appendControlPanel = function() {
-            templateModule.getCompiledTemplate('user_control_panel')
-                .then(function(html){
-                    var rev_auth = JSON.parse(sessionStorage.getItem('rev_auth'));
-                    $('body').prepend(html(rev_auth));
-                    $('.rev_logout').on('click', function() {
-                        $('.rev_user_control_panel').remove();
-                        pageController.removeEditClass();
-                        sessionStorage.clear();
-                        pageController.init();
-                    })
-                });
-    };
-
-    pageController.loginAuthenticate = function() {
-      $('.rev_login__form').on('submit', function(e) {
-        var username = $(this).find('input[title="username"]').val();
-        var password = $(this).find('input[title="password"]').val();
-        console.log(username, password);
-          e.preventDefault();
-          //Oauth POST
-            data = {
-              "grant_type": "password",
-              "client_id": OAUTH_CLIENT_ID,
-              "client_secret": password,
-              "username": username,
-              "password": password,
-            }
-            $.ajax({
-              url: "http://revenant-api.dev/oauth/token",
-              method: "POST",
-              data: data,
-            })
-              .error(function(error){
-              console.log('oauth error', error)
-            })
-              .done(function (response, status, xhr) {
-                console.log('oauth response', response);
-                  sessionStorage.setItem( 'rev_auth', JSON.stringify({
-                    "username": username,
-                    "access_token":response.access_token,
-                    "refresh_token": response.refresh_token
-                  }));
-                  $('.rev_login').remove();
-                  pageController.addEditClass();
-                  pageController.edit();
-                  pageController.appendControlPanel();
-              });
-      })
-    };
-
+  //control module initializer, checks for session token and adds login or control panel on page load.
   pageController.init = function() {
     if (!sessionStorage.getItem('rev_auth')) {
         pageController.appendLogin();
