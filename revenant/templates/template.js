@@ -6,7 +6,6 @@ var templateModule = (function(module){
             url: '/revenant/templates/' + name + '.hbs'
         })
             .then(function(text){
-                console.log(text);
                 return Handlebars.compile(text);
             });
     }

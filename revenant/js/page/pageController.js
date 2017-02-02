@@ -103,7 +103,7 @@ var pageControllerModule = (function($){
                     var rev_auth = JSON.parse(sessionStorage.getItem('rev_auth'));
                     $('body').prepend(html(rev_auth));
                     $('.rev_logout').on('click', function() {
-                        $('.rev_user_control_panel').fadeOut();
+                        $('.rev_user_control_panel').remove();
                         pageController.removeEditClass();
                         sessionStorage.clear();
                         pageController.init();
@@ -120,7 +120,7 @@ var pageControllerModule = (function($){
           //Oauth POST
             data = {
               "grant_type": "password",
-              "client_id": ,
+              "client_id": OAUTH_CLIENT_ID,
               "client_secret": password,
               "username": username,
               "password": password,
@@ -140,7 +140,7 @@ var pageControllerModule = (function($){
                     "access_token":response.access_token,
                     "refresh_token": response.refresh_token
                   }));
-                  $('.rev_login').fadeOut().remove();
+                  $('.rev_login').remove();
                   pageController.addEditClass();
                   pageController.edit();
                   pageController.appendControlPanel();
