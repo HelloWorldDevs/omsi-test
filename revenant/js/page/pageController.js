@@ -11,6 +11,7 @@ var pageControllerModule = (function($){
     $('.text--edit').on('click', function() {
       var dataCategory = $(this).attr('data-category');
       var data = $(this).data('complete-path');
+      data.username = JSON.parse(sessionStorage.getItem('rev_auth')).username;
       console.log('data here!', data);
       var el = document.querySelector('[data-category="'+ dataCategory +'"');
       if (!el.hasAttribute('id', data.xpath)) {

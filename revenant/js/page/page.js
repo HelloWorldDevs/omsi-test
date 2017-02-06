@@ -37,11 +37,11 @@ var pageModule = (function($){
           oldText: oldText
       };
       return completePath;
-  }
+  };
 
   //helper function for posting to rev-api, creates page and default content item.
-  page.createRevenantPage = function(page) {
-      console.log('current revenant', page);
+  page.createRevenantPage = function(currentPage) {
+      console.log('current revenant', currentPage);
       $.ajax({
           type: 'POST',
           url: 'http://revenant-api.dev/revenant_page/page',
@@ -49,22 +49,22 @@ var pageModule = (function($){
               'Accept': 'application/json',
               'Content-Type': 'application/hal+json'
           },
-          data: JSON.stringify(page),
+          data: JSON.stringify(currentPage),
           success: function(data) {
               console.log('success', data)
           },
           error: function (err) {
               console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
           }
-      })
-  }
+      });
+  };
 
   ///check for revenant content for current page, appends all content and invokes pageController callback.
   page.revenantContentCheck = function(callback) {
-      const currentPage = window.location.hostname + window.location.pathname;
+      const pageLocation = window.location.hostname + window.location.pathname;
       $.ajax({
           method: 'GET',
-          url:'http://revenant-api.dev/rev-content/?url=' + currentPage,
+          url:'http://revenant-api.dev/rev-content/?url=' + pageLocation,
           success: function(data) {
               console.log('success again!', data);
 
@@ -72,8 +72,8 @@ var pageModule = (function($){
               if (!data.length) {
                   var currentPage = {};
                   currentPage.title = window.location.hostname + window.location.pathname;
-                  currentPage.url = currentPage;
-                  page.createRevenantPage(page);
+                  currentPage.url = pageLocation;
+                  page.createRevenantPage(currentPage);
               }
 
               // if data is received replace all corresponding text nodes with new text using saved xpath.
@@ -92,16 +92,17 @@ var pageModule = (function($){
           error: function (err) {
               console.log("AJAX error in request: " + err);
           }
-      })
-  }
+      });
+  };
 
-    //initializes check for content and passes in pageController as callback
+  //initializes check for content and passes in pageController as callback
   page.init = function(callback) {
-    page.revenantContentCheck(callback)
+    page.revenantContentCheck(callback);
   };
 
   return {
     getCompletePath : page.getCompletePath,
     init : page.init,
   }
+
 })(jQuery);
