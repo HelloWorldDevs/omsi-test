@@ -1,5 +1,4 @@
 var pageModule = (function($) {
-
   var page = {};
 
   page.getText = function(e) {
@@ -42,7 +41,6 @@ var pageModule = (function($) {
 
   //helper function for posting to rev-api, creates page and default content item.
   page.createRevenantPage = function(currentPage) {
-<<<<<<< HEAD
       // console.log('current revenant', currentPage);
       var authBearer = 'Bearer ' + JSON.parse(sessionStorage.getItem('rev_auth')).access_token;
       $.ajax({
@@ -59,22 +57,6 @@ var pageModule = (function($) {
           },
           error: function (err) {
               // console.log("AJAX error in request: " + err);
-=======
-      console.log('current revenant', currentPage);
-      $.ajax({
-          type: 'POST',
-          url: 'http://revenant-api.dev/revenant_page/page',
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/hal+json'
-          },
-          data: JSON.stringify(currentPage),
-          success: function(data) {
-              console.log('success', data)
-          },
-          error: function (err) {
-              console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
->>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
           }
       });
   };
@@ -84,20 +66,11 @@ var pageModule = (function($) {
       const pageLocation = window.location.hostname + window.location.pathname;
       $.ajax({
           method: 'GET',
-<<<<<<< HEAD
           url:'http://revenant-api.bfdig.com/rev-content/?url=' + pageLocation,
           success: function(data) {
               // console.log('success again!', data);
               //if no revenant nodes are sent and the user is logged in, send current revenant data to be created as revenant revenant entity reference
               if (!data.length &&  sessionStorage.getItem('rev_auth')) {
-=======
-          url:'http://revenant-api.dev/rev-content/?url=' + pageLocation,
-          success: function(data) {
-              console.log('success again!', data);
-
-              //if no revenant nodes are sent, send current revenant data to be created as revenant revenant entity reference
-              if (!data.length) {
->>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
                   var currentPage = {};
                   currentPage.title = window.location.hostname + window.location.pathname;
                   currentPage.url = pageLocation;
@@ -108,30 +81,19 @@ var pageModule = (function($) {
               else {
                   data.forEach(function(item) {
                     //excludes default content item.
-<<<<<<< HEAD
                       if (!item || item.field_xpath.includes('default')) {
-=======
-                      if (item.field_xpath.includes('default')) {
->>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
                           return
                       }
                       var editedNode = page.getElementByXpath(item.field_xpath);
                       editedNode.innerHTML = item.field_new_content;
                   })
               }
-<<<<<<< HEAD
               if (callback) {
                 callback();
               }
           },
           error: function (err) {
               // console.log("AJAX error in request: " + err);
-=======
-              callback();
-          },
-          error: function (err) {
-              console.log("AJAX error in request: " + err);
->>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
           }
       });
   };
