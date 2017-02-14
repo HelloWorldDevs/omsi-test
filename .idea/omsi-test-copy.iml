@@ -8,9 +8,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-=======
-    <orderEntry type="library" name="omsi-test node_modules" level="project" />
->>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
   </component>
 </module>

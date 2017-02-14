@@ -5,9 +5,12 @@ var pageControllerModule = (function($){
   CKEDITOR.plugins.addExternal('inlinesave', '/revenant/ckeditor/inlinesave/', 'plugin.js' );
   CKEDITOR.disableAutoInline = true;
 
+<<<<<<< HEAD
   //for clearing ckeditor cache and allowing set Authorization Header
   CKEDITOR.timestamp='ABCD';
 
+=======
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
 
 //inline editor added on text element click
   pageController.edit = function() {
@@ -15,12 +18,17 @@ var pageControllerModule = (function($){
       var dataCategory = $(this).attr('data-category');
       var data = $(this).data('complete-path');
       data.username = JSON.parse(sessionStorage.getItem('rev_auth')).username;
+<<<<<<< HEAD
       var authBearer = 'Bearer ' + JSON.parse(sessionStorage.getItem('rev_auth')).access_token;
       // console.log('data here!', data);
+=======
+      console.log('data here!', data);
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
       var el = document.querySelector('[data-category="'+ dataCategory +'"');
       if (!el.hasAttribute('id', data.xpath)) {
         el.setAttribute('id', data.xpath);
         CKEDITOR.config.inlinesave = {
+<<<<<<< HEAD
           postUrl: 'http://revenant-api.bfdig.com/revenant_page/page_content',
           postAuth: authBearer,
           postData: {data: data},
@@ -35,6 +43,17 @@ var pageControllerModule = (function($){
           onFailure: function(editor, status, request) {
               // console.log('save failed', editor, status, request);
           },
+=======
+          postUrl: 'http://revenant-api.dev/revenant_page/page_content',
+          postData: {data: data},
+          useJson: true,
+          onSave: function(editor) {
+            console.log('save success!', editor);
+            return true;
+          },
+          onSuccess: function(editor, data) { console.log('save successful', editor, data); },
+          onFailure: function(editor, status, request) { console.log('save failed', editor, status, request); },
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
           useJSON: true,
           useColorIcon: false
         };
@@ -133,26 +152,44 @@ var pageControllerModule = (function($){
           data = {
             "grant_type": "password",
             "client_id": OAUTH_CLIENT_ID,
+<<<<<<< HEAD
             "client_secret": OAUTH_CLIENT_SECRET,
+=======
+            "client_secret": password,
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
             "username": username,
             "password": password,
           }
           $.ajax({
+<<<<<<< HEAD
             url: "http://revenant-api.bfdig.com/oauth/token",
+=======
+            url: "http://revenant-api.dev/oauth/token",
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
             method: "POST",
             data: data,
           })
             .error(function(error){
+<<<<<<< HEAD
             // console.log('oauth error', error)
           })
             .done(function (response, status, xhr) {
               // console.log('oauth response', response);
+=======
+            console.log('oauth error', error)
+          })
+            .done(function (response, status, xhr) {
+              console.log('oauth response', response);
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
                 sessionStorage.setItem( 'rev_auth', JSON.stringify({
                   "username": username,
                   "access_token":response.access_token,
                   "refresh_token": response.refresh_token
                 }));
+<<<<<<< HEAD
                 pageModule.init();
+=======
+>>>>>>> 679910d9fac19addd079a0edc6d654b8e950a700
                 $('.rev_login').remove();
                 pageController.addEditClass();
                 pageController.edit();

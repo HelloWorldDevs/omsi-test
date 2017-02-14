@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/omsi-test.iml" filepath="$PROJECT_DIR$/.idea/omsi-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/omsi-test-copy.iml" filepath="$PROJECT_DIR$/.idea/omsi-test-copy.iml" />
     </modules>
   </component>
 </project>
