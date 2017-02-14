@@ -1,0 +1,16 @@
+.services-modals {
+  & .modal-title {
+  }
+  & p {
+    padding-bottom: 15px;
+  }
+  & img {
+    max-width: 180px;
+    padding-bottom: 20px;
+  }
+}
+
+button.close {
+  font-size: 35px;
+  color: #373737;
+}

@@ -1,0 +1,34 @@
+.team-carousel{
+  text-align: center;
+  & img {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 250px;
+  }
+}
+
+
+.img-hover-plus {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  &:hover:after {
+    content: "+";
+    position: absolute;
+    top: 35%;
+    color: white;
+    font-size: 60px;
+    left: 45%;
+    z-index: 11;
+  }
+  &:hover:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.37);
+  }
+}

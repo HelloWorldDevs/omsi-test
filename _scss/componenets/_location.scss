@@ -1,0 +1,62 @@
+.location-card {
+  background: white;
+  border-radius: 10px;
+  margin: 30px 0;
+  @media (max-width: $width-md) {
+    margin-top: 0px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+#google-map5 {
+  height: 700px;
+  @media (max-width: $width-md) {
+    height: 300px;
+  }
+}
+
+#content .floating-card {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  margin-left: -570px;
+  @media (max-width: $width-md) {
+    position: static;
+    text-align: center;
+    width: 100% !important;
+    margin-left: 0px;
+    background-color: #f9f9f9;
+  }
+}
+
+.hours {
+  & li {
+    list-style: none;
+    text-align: left;
+  }
+}
+
+.location-logo img {
+  max-width: 350px;
+  @media (max-width: $width-xs) {
+    max-width: 200px;
+  }
+}
+
+th {
+width: 1px;
+white-space: nowrap;
+text-align: right;
+}
+
+td {
+  text-align: right;
+}
+
+table {
+  max-width: 250px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
